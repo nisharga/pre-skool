@@ -1781,3 +1781,10 @@ body.app-chat {
     }
   }
 }
+
+
+
+// over ride css
+body.mini-sidebar .sidebar .sidebar-menu > ul > li ul > li.active a, body.mini-sidebar .sidebar .sidebar-menu > ul li a {
+    justify-content: start;
+}

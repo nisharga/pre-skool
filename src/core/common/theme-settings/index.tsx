@@ -15,8 +15,8 @@ import Link from "next/link";
 
 const ThemeSettings = () => {
   const buyNow = () => {
-    window.open('https://1.envato.market/52Ndo','_blank')
-  }
+    window.open("https://1.envato.market/52Ndo", "_blank");
+  };
   const dispatch = useDispatch();
   const dataLayout = useSelector((state: any) => state.themeSetting.dataLayout);
   const dataTopBar = useSelector((state: any) => state.themeSetting.dataTopBar);
@@ -54,7 +54,7 @@ const ThemeSettings = () => {
 
   return (
     <>
-      <div className="sidebar-contact ">
+      {/* <div className="sidebar-contact ">
         <div
           className="toggle-theme"
           data-bs-toggle="offcanvas"
@@ -62,7 +62,7 @@ const ThemeSettings = () => {
         >
           <i className="fa fa-cog fa-w-16 fa-spin" />
         </div>
-      </div>
+      </div> */}
       <div
         className="sidebar-themesettings offcanvas offcanvas-end"
         id="theme-setting"
@@ -758,7 +758,8 @@ const ThemeSettings = () => {
               </Link>
             </div>
             <div className="col-6">
-              <Link onClick={buyNow}
+              <Link
+                onClick={buyNow}
                 href="#"
                 target="_blank"
                 className="btn btn-primary w-100"

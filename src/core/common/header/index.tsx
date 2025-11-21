@@ -11,6 +11,8 @@ import { useState } from "react";
 import { all_routes } from "@/router/all_routes";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { Menu } from "react-feather";
+import { User, Settings, LogOut } from "react-feather";
 
 const Header = () => {
   const routes = all_routes;
@@ -104,12 +106,9 @@ const Header = () => {
           href="#sidebar"
           onClick={toggleMobileSidebar}
         >
-          <span className="bar-icon">
-            <span />
-            <span />
-            <span />
-          </span>
+          <Menu size={26} />
         </Link>
+
         <div className="header-user">
           <div className="nav user-menu">
             {/* Search */}
@@ -575,15 +574,34 @@ const Header = () => {
         </div>
         {/* Mobile Menu */}
         <div className="dropdown mobile-user-menu">
-          <Link
+          {/* <Link
             href="#"
             className="nav-link dropdown-toggle"
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             <i className="fa fa-ellipsis-v" />
-          </Link>
-          <div className="dropdown-menu dropdown-menu-end">
+            sss
+          </Link> */}
+
+          <div
+            className="d-flex align-items-center justify-content-center gap-3"
+            style={{ marginLeft: "-44px" }}
+          >
+            <Link className="dropdown-item" href={routes.profile}>
+              <User size={18} />
+            </Link>
+
+            <Link className="dropdown-item" href={routes.profilesettings}>
+              <Settings size={18} />
+            </Link>
+
+            <Link className="dropdown-item" href={routes.login}>
+              <LogOut size={18} />
+            </Link>
+          </div>
+
+          {/* <div className="dropdown-menu dropdown-menu-end">
             <Link className="dropdown-item" href={routes.profile}>
               My Profile
             </Link>
@@ -593,7 +611,7 @@ const Header = () => {
             <Link className="dropdown-item" href={routes.login}>
               Logout
             </Link>
-          </div>
+          </div> */}
         </div>
         {/* /Mobile Menu */}
       </div>

@@ -163,7 +163,7 @@ const Sidebar = () => {
         onMouseLeave={onMouseLeave}
         ref={sidebarRef}
       >
-        <PerfectScrollbar>
+        <PerfectScrollbar style={{ height: "100%", overflow: "scroll" }}>
           <div className="sidebar-inner slimscroll">
             <div id="sidebar-menu" className="sidebar-menu">
               <ul>
