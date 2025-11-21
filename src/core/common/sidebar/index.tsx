@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SidebarData } from "../../data/json/sidebarData";
 import ImageWithBasePath from "../imageWithBasePath";
 import "../../../style/icon/tabler-icons/webfont/tabler-icons.css";
@@ -71,6 +71,9 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const previousLocation = usePreviousRoute();
 
+  // sidebar ref
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const layoutPages = [
       "/layout-dark",
@@ -85,7 +88,9 @@ const Sidebar = () => {
     );
     const isPreviousLayoutPage =
       previousLocation &&
-      layoutPages.some((path) => previousLocation && previousLocation.includes(path));
+      layoutPages.some(
+        (path) => previousLocation && previousLocation.includes(path)
+      );
 
     if (isPreviousLayoutPage && !isCurrentLayoutPage) {
       dispatch(resetAllMode());
@@ -97,9 +102,9 @@ const Sidebar = () => {
     // Select all 'submenu' elements
     const submenus = document.querySelectorAll(".submenu");
 
-     const mainWrapper = document.querySelector('.main-wrapper');
+    const mainWrapper = document.querySelector(".main-wrapper");
     if (mainWrapper) {
-      mainWrapper.classList.remove('slide-nav');
+      mainWrapper.classList.remove("slide-nav");
     }
     // Loop through each 'submenu'
     submenus.forEach((submenu) => {
@@ -117,18 +122,34 @@ const Sidebar = () => {
     });
   }, [location]);
 
+  // outside click sidebar close
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(e.target as Node)
+      ) {
+        document.body.classList.remove("expand-menu");
+        dispatch(setExpandMenu(false));
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
   const onMouseEnter = () => {
-    const isMiniSidebar = document.body.classList.contains('mini-sidebar');
+    const isMiniSidebar = document.body.classList.contains("mini-sidebar");
     if (isMiniSidebar) {
-      document.body.classList.add('expand-menu');
+      document.body.classList.add("expand-menu");
       dispatch(setExpandMenu(true));
     }
   };
 
   const onMouseLeave = () => {
-    const isMiniSidebar = document.body.classList.contains('mini-sidebar');
+    const isMiniSidebar = document.body.classList.contains("mini-sidebar");
     if (isMiniSidebar) {
-      document.body.classList.remove('expand-menu');
+      document.body.classList.remove("expand-menu");
       dispatch(setExpandMenu(false));
     }
   };
@@ -136,9 +157,11 @@ const Sidebar = () => {
     <>
       <div
         className="sidebar"
+        style={{ width: window.innerWidth < 480 ? "70%" : "auto" }}
         id="sidebar"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        ref={sidebarRef}
       >
         <PerfectScrollbar>
           <div className="sidebar-inner slimscroll">
@@ -195,17 +218,16 @@ const Sidebar = () => {
                           <li className="submenu" key={title.label}>
                             <Link
                               href={title?.link ?? "#"}
-                               onClick={() =>
-                                 handleClick(
-                                   title?.label,
-                                   title?.themeSetting,
-                                   getLayoutClass(title?.label)
-                                 )
-                               }
-                               className={`${
-                                 subOpen === title?.label ? "subdrop" : ""
-                          
-                               } ${isActive ? "active" : ""}`}
+                              onClick={() =>
+                                handleClick(
+                                  title?.label,
+                                  title?.themeSetting,
+                                  getLayoutClass(title?.label)
+                                )
+                              }
+                              className={`${
+                                subOpen === title?.label ? "subdrop" : ""
+                              } ${isActive ? "active" : ""}`}
                             >
                               <i className={title.icon}></i>
                               <span>{title?.label}</span>
@@ -237,9 +259,8 @@ const Sidebar = () => {
                                       ) || []),
                                     ].filter(Boolean);
 
-                                    const isSubActive = subLinks.includes(
-                                      location
-                                    );
+                                    const isSubActive =
+                                      subLinks.includes(location);
 
                                     return (
                                       <li
@@ -252,17 +273,17 @@ const Sidebar = () => {
                                       >
                                         <Link
                                           href={item?.link ?? "#"}
-                                           className={`${
-                                             isSubActive ? "active" : ""
-                                           } ${
-                                             subsidebar === item?.label
-                                               ? "subdrop"
-                                               : ""
-                                           }`}
-                                           onClick={() =>
-                                             toggleSubsidebar(item?.label)
-                                           }
-                                         >
+                                          className={`${
+                                            isSubActive ? "active" : ""
+                                          } ${
+                                            subsidebar === item?.label
+                                              ? "subdrop"
+                                              : ""
+                                          }`}
+                                          onClick={() =>
+                                            toggleSubsidebar(item?.label)
+                                          }
+                                        >
                                           {item?.label}
                                           <span
                                             className={
@@ -278,13 +299,14 @@ const Sidebar = () => {
                                               {item?.submenuItems?.map(
                                                 (subItem: any) => {
                                                   const isDeepActive =
-                                                    subItem?.link ===
-                                                    location;
+                                                    subItem?.link === location;
 
                                                   return (
                                                     <li key={subItem.label}>
                                                       <Link
-                                                        href={subItem?.link ?? "#"}
+                                                        href={
+                                                          subItem?.link ?? "#"
+                                                        }
                                                         className={`submenu-two ${
                                                           isDeepActive
                                                             ? "active"

@@ -6,10 +6,7 @@ import {
   setDataTheme,
 } from "../../data/redux/themeSettingSlice";
 import ImageWithBasePath from "../imageWithBasePath";
-import {
-  setExpandMenu,
-  setMobileSidebar,
-} from "../../data/redux/sidebarSlice";
+import { setExpandMenu, setMobileSidebar } from "../../data/redux/sidebarSlice";
 import { useState } from "react";
 import { all_routes } from "@/router/all_routes";
 import { usePathname } from "next/navigation";
@@ -64,15 +61,13 @@ const Header = () => {
   const toggleFullscreen = () => {
     if (!isFullscreen) {
       if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen().catch(() => {
-        });
+        document.documentElement.requestFullscreen().catch(() => {});
         setIsFullscreen(true);
       }
     } else {
       if (document.exitFullscreen) {
         if (document.fullscreenElement) {
-          document.exitFullscreen().catch(() => {
-          });
+          document.exitFullscreen().catch(() => {});
         }
         setIsFullscreen(false);
       }
@@ -395,7 +390,7 @@ const Header = () => {
                               <p className="mb-1">
                                 <span className="text-dark fw-semibold">
                                   Shawn
-                                </span>{' '}
+                                </span>{" "}
                                 performance in Math is below the threshold.
                               </p>
                               <span>Just Now</span>
@@ -485,7 +480,10 @@ const Header = () => {
                     <Link href="#" className="btn btn-light w-100 me-2">
                       Cancel
                     </Link>
-                    <Link href={routes.activity} className="btn btn-primary w-100">
+                    <Link
+                      href={routes.activity}
+                      className="btn btn-primary w-100"
+                    >
                       View All
                     </Link>
                   </div>

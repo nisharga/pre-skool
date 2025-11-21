@@ -23,7 +23,7 @@ const authApi = apiSlice.injectEndpoints({
    // === get client profile by token ===
    getCurrentProfile: builder.query({
      query: () => ({
-       url: `/user`,
+       url: `/users`,
        method: "GET",
      }),
      providesTags: ["CLIENT_PROFILE"],
