@@ -11,7 +11,7 @@ const Register3Component = () => {
   const navigation = useRouter();
 
   const navigationPath = () => {
-    navigation.push(routes.login3);
+    navigation.push(routes.login);
   };
   const [passwordVisibility, setPasswordVisibility] = useState({
     password: false,
@@ -172,7 +172,7 @@ const Register3Component = () => {
                     <div className="text-center">
                       <h6 className="fw-normal text-dark mb-0">
                         Already have an account?
-                        <Link href={routes.login3} className="hover-a ">
+                        <Link href={routes.login} className="hover-a ">
                           {" "}
                           Sign In
                         </Link>

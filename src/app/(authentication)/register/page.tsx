@@ -1,8 +1,8 @@
 "use client";
-import RegisterComponent from "@/components/authentication/register/register";
+import Register3Component from "@/components/authentication/register/register-3";
 
-export default function Register(){
+export default function Register3(){
     return(
-        <><RegisterComponent/></>
+        <><Register3Component/></>
     )
 }

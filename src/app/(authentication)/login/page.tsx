@@ -1,11 +1,8 @@
 "use client";
+import Login3Component from "@/components/authentication/login/login-3";
 
-import LoginComponent from "@/components/authentication/login/login";
-
-export default function Login() {
-  return (
-    <>
-      <LoginComponent />
-    </>
-  );
+export default function Login3(){
+    return(
+        <><Login3Component/></>
+    )
 }

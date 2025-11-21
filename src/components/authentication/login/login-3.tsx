@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { all_routes } from "@/router/all_routes";
 import ImageWithBasePath from "../../../core/common/imageWithBasePath";
 import { useRouter } from "next/navigation";
@@ -124,7 +124,10 @@ const Login3Component = () => {
                         <p className="ms-1 mb-0 ">Remember Me</p>
                       </div>
                       <div className="text-end ">
-                        <Link href={routes.forgotPassword} className="link-danger">
+                        <Link
+                          href={routes.forgotPassword}
+                          className="link-danger"
+                        >
                           Forgot Password?
                         </Link>
                       </div>
@@ -141,7 +144,7 @@ const Login3Component = () => {
                     <div className="text-center">
                       <h6 className="fw-normal text-dark mb-0">
                         Don’t have an account?{" "}
-                        <Link href={routes.register3} className="hover-a ">
+                        <Link href={routes.register} className="hover-a ">
                           {" "}
                           Create Account
                         </Link>
