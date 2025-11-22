@@ -23,6 +23,7 @@ const Sidebar = () => {
 
   const [subOpen, setSubopen] = useState<any>("");
   const [subsidebar, setSubsidebar] = useState("");
+  const [width, setWidth] = useState("auto");
   const toggleSidebar = (title: any) => {
     localStorage.setItem("menuOpened", title);
     if (title === subOpen) {
@@ -138,6 +139,14 @@ const Sidebar = () => {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (window.innerWidth < 480) {
+      setWidth("70%");
+    } else {
+      setWidth("auto");
+    }
+  }, []);
+
   const onMouseEnter = () => {
     const isMiniSidebar = document.body.classList.contains("mini-sidebar");
     if (isMiniSidebar) {
@@ -157,7 +166,7 @@ const Sidebar = () => {
     <>
       <div
         className="sidebar"
-        style={{ width: window.innerWidth < 480 ? "70%" : "auto" }}
+        style={{ width }}
         id="sidebar"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
