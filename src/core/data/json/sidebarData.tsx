@@ -14,14 +14,14 @@ export const SidebarData = [
       {
         label: "Dashboard",
         icon: "ti ti-layout-dashboard",
-        submenu: true,
+        submenu: false,
         showSubRoute: false,
 
         submenuItems: [
           { label: "Admin Dashboard", link: routes.adminDashboard },
-          { label: "Teacher Dashboard", link: routes.teacherDashboard },
+          /* { label: "Teacher Dashboard", link: routes.teacherDashboard },
           { label: "Student Dashboard", link: routes.studentDashboard },
-          { label: "Parent Dashboard", link: routes.parentDashboard },
+          { label: "Parent Dashboard", link: routes.parentDashboard }, */
         ],
       },
       {
@@ -33,31 +33,6 @@ export const SidebarData = [
           {
             label: "Chat",
             link: routes.chat,
-            showSubRoute: false,
-          },
-          {
-            label: "Call",
-            link: routes.audioCall,
-            showSubRoute: false,
-          },
-          {
-            label: "Calendar",
-            link: routes.calendar,
-            showSubRoute: false,
-          },
-          {
-            label: "Email",
-            link: routes.email,
-            showSubRoute: false,
-          },
-          {
-            label: "To Do",
-            link: routes.todo,
-            showSubRoute: false,
-          },
-          {
-            label: "Notes",
-            link: routes.notes,
             showSubRoute: false,
           },
           {
@@ -76,38 +51,6 @@ export const SidebarData = [
     submenuHdr: "LAYOUT",
     submenuItems: [
       {
-        label: "Default",
-        icon: "ti ti-layout-sidebar",
-        submenu: false,
-        showSubRoute: false,
-        link: routes.layoutDefault,
-        themeSetting: true,
-      },
-      {
-        label: "Mini",
-        icon: "ti ti-layout-align-left",
-        submenu: false,
-        showSubRoute: false,
-        link: routes.layoutMini,
-        themeSetting: true,
-      },
-      {
-        label: "RTL",
-        icon: "ti ti-text-direction-rtl",
-        submenu: false,
-        showSubRoute: false,
-        link: routes.layoutRtl,
-        themeSetting: true,
-      },
-      {
-        label: "Box",
-        icon: "ti ti-layout-distribute-vertical",
-        submenu: false,
-        showSubRoute: false,
-        link: routes.layoutBox,
-        themeSetting: true,
-      },
-      {
         label: "Dark",
         icon: "ti ti-moon",
         submenu: false,
@@ -124,6 +67,30 @@ export const SidebarData = [
     submenuHdr: "Peoples",
 
     submenuItems: [
+      {
+        label: "Teachers",
+        icon: "ti ti-users",
+        submenu: true,
+        showSubRoute: false,
+
+        submenuItems: [
+          { label: "Teacher List", link: routes.teacherList },
+          {
+            label: "Teachers ID",
+            link: routes.teacherGrid,
+            subLink1: routes.addTeacher,
+            subLink2: routes.editTeacher,
+          },
+          {
+            label: "Teacher Details",
+            link: routes.teacherDetails,
+            subLink1: routes.teacherLibrary,
+            subLink2: routes.teacherSalary,
+            subLink3: routes.teacherLeaves,
+          },
+          { label: "Routine", link: routes.teachersRoutine },
+        ],
+      },
       {
         label: "Students",
         icon: "ti ti-school",
@@ -168,30 +135,6 @@ export const SidebarData = [
         submenuItems: [
           { label: "All Guardians", link: routes.guardiansGrid },
           { label: "Guardians List", link: routes.guardiansList },
-        ],
-      },
-      {
-        label: "Teachers",
-        icon: "ti ti-users",
-        submenu: true,
-        showSubRoute: false,
-
-        submenuItems: [
-          {
-            label: "All Teachers",
-            link: routes.teacherGrid,
-            subLink1: routes.addTeacher,
-            subLink2: routes.editTeacher,
-          },
-          { label: "Teacher List", link: routes.teacherList },
-          {
-            label: "Teacher Details",
-            link: routes.teacherDetails,
-            subLink1: routes.teacherLibrary,
-            subLink2: routes.teacherSalary,
-            subLink3: routes.teacherLeaves,
-          },
-          { label: "Routine", link: routes.teachersRoutine },
         ],
       },
     ],
@@ -996,7 +939,7 @@ export const SidebarData = [
             showSubRoute: false,
           },
           { label: "Spinner", link: routes.spinner, showSubRoute: false },
-          
+
           { label: "Tabs", link: routes.navTabs, showSubRoute: false },
           { label: "Toasts", link: routes.toasts, showSubRoute: false },
           { label: "Tooltips", link: routes.tooltip, showSubRoute: false },
@@ -1012,7 +955,7 @@ export const SidebarData = [
         submenuItems: [
           { label: "Ribbon", link: routes.ribbon, showSubRoute: false },
           { label: "Clipboard", link: routes.clipboard, showSubRoute: false },
-        
+
           {
             label: "Range Slider",
             link: routes.rangeSlider,
@@ -1055,7 +998,7 @@ export const SidebarData = [
             link: routes.fantawesome,
             showSubRoute: false,
           },
-          
+
           {
             label: "Ionic Icons",
             link: routes.iconicIcon,
@@ -1067,7 +1010,7 @@ export const SidebarData = [
             showSubRoute: false,
           },
           { label: "Pe7 Icons", link: routes.pe7icon, showSubRoute: false },
-         
+
           {
             label: "Themify Icons",
             link: routes.themifyIcon,
